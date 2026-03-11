@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Interactive product configurator for HVAC units, air handlers, and controls. Build custom configurations and generate quotes." />
+  <meta property="og:title" content="Product Configurator" />
+  <meta property="og:description" content="Interactive product configurator for HVAC units, air handlers, and controls. Build custom configurations and generate quotes." />
   <title>Product Configurator</title>
   <style>
     /* THEME TOKENS */
@@ -67,6 +70,29 @@
     .sep{height:1px;background:var(--border);margin:8px 0}
     .kpi{display:flex;justify-content:space-between}
 
+    /* Focus-visible styles for a11y */
+    .btn:focus-visible, .tab:focus-visible, select:focus-visible, input:focus-visible{
+      outline:2px solid var(--accent);outline-offset:2px
+    }
+
+    /* Tablet breakpoint */
+    @media (max-width: 900px){
+      .app{grid-template-columns:1fr;gap:12px;padding:12px}
+      .col{width:100%}
+      .sticky{position:static}
+      .toolbar{flex-wrap:wrap}
+      .toolbar .left{width:100%}
+      .toolbar .right{width:100%;justify-content:flex-start;flex-wrap:wrap}
+      .toolbar .right input[type="file"]{max-width:200px}
+    }
+
+    /* Small phone breakpoint */
+    @media (max-width: 600px){
+      .grid{grid-template-columns:1fr}
+      .col{padding:10px}
+      .toolbar{padding:8px 10px}
+    }
+
     @media print{
       body{background:#fff;color:#000}
       .toolbar{display:none}
@@ -83,7 +109,7 @@
 <body>
   <div class="toolbar no-print" role="region" aria-label="Toolbar">
     <div class="left row" style="gap:12px">
-      <strong>Product Configurator</strong>
+      <h1 style="font-size:inherit;margin:0;font-weight:700">Product Configurator</h1>
       <span class="muted">Demo build. Data may be placeholder.</span>
     </div>
     <div class="right">
@@ -93,6 +119,7 @@
     </div>
   </div>
 
+  <main>
   <div class="app">
     <!-- LEFT: QuickShip & Wizard -->
     <div class="col left">
@@ -250,6 +277,7 @@
       </div>
     </div>
   </div>
+  </main>
 
   <script>
     // Feature flags
