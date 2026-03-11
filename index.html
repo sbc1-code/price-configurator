@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Product Configurator - Canvas MVP</title>
+  <title>Product Configurator</title>
   <style>
     /* THEME TOKENS */
     :root{
@@ -83,7 +83,7 @@
 <body>
   <div class="toolbar no-print" role="region" aria-label="Toolbar">
     <div class="left row" style="gap:12px">
-      <strong>Product Configurator - Canvas MVP</strong>
+      <strong>Product Configurator</strong>
       <span class="muted">Demo build. Data may be placeholder.</span>
     </div>
     <div class="right">
@@ -96,7 +96,7 @@
   <div class="app">
     <!-- LEFT: QuickShip & Wizard -->
     <div class="col left">
-      <h2>Product A - MVP</h2>
+      <h2>Product A - HVAC</h2>
       <div class="tabs" role="tablist">
         <button id="tab-qs" class="tab" role="tab" aria-selected="false">QuickShip</button>
         <button id="tab-cfg" class="tab" role="tab" aria-selected="true">Configure</button>
@@ -112,11 +112,11 @@
         <div class="section">
           <label for="ptype">Product Type</label>
           <select id="ptype">
-            <option value="Light" selected>Light</option>
-            <option value="Camera">Camera</option>
-            <option value="Accessory">Accessory</option>
+            <option value="HVAC" selected>HVAC Unit</option>
+            <option value="AirHandler">Air Handler</option>
+            <option value="Controls">Controls</option>
           </select>
-          <div class="help">Choose type. Full configuration is enabled for Lights.</div>
+          <div class="help">Choose type. Full configuration is enabled for HVAC Units.</div>
         </div>
 
         <div class="section">
@@ -124,76 +124,76 @@
           <select id="model"></select>
         </div>
 
-        <!-- Lights configuration fields -->
+        <!-- HVAC configuration fields -->
         <div id="cfg-fields">
           <h3 style="margin:4px 0 8px">Product options</h3>
           <div class="grid">
             <div class="section">
-              <label for="depth">Max Operating Depth</label>
-              <select id="depth" disabled>
-                <option value="4000">4,000 m</option>
-                <option value="6000">6,000 m</option>
-                <option value="11000">11,000 m</option>
+              <label for="capacity">Cooling Capacity (BTU)</label>
+              <select id="capacity" disabled>
+                <option value="36000">36,000 BTU</option>
+                <option value="48000">48,000 BTU</option>
+                <option value="60000">60,000 BTU</option>
               </select>
-              <div class="help">Depth is determined by housing and port.</div>
+              <div class="help">Capacity is determined by cabinet and refrigerant.</div>
             </div>
             <div class="section">
-              <label for="housing">Housing</label>
-              <select id="housing">
-                <option value="AL">Aluminum (to 6,000 m)</option>
-                <option value="TI">Titanium 6,000 m</option>
-                <option value="11">Titanium 11,000 m</option>
-              </select>
-            </div>
-            <div class="section">
-              <label for="port">Port</label>
-              <select id="port">
-                <option value="A">Acrylic (to 4,000 m)</option>
-                <option value="S">Sapphire (to 11,000 m)</option>
+              <label for="cabinet">Cabinet Material</label>
+              <select id="cabinet">
+                <option value="GS">Galvanized Steel</option>
+                <option value="SS">Stainless Steel</option>
+                <option value="PC">Powder Coated</option>
               </select>
             </div>
             <div class="section">
-              <label for="beam">Beam</label>
-              <select id="beam"></select>
-              <div class="help" id="beam-note" aria-live="polite"></div>
-            </div>
-            <div class="section">
-              <label for="color">Color</label>
-              <select id="color">
-                <option value="DW00">Daylight White</option>
-                <option value="WW00">Warm White</option>
-                <option value="DW90">CRI 90 White (+$50)</option>
-                <option value="B475">Blue 475 nm (HO only)</option>
-                <option value="G528">Green 528 nm (HO only)</option>
-                <option value="R625">Red 625 nm (HO only)</option>
+              <label for="refrigerant">Refrigerant Type</label>
+              <select id="refrigerant">
+                <option value="R410A">R-410A (Standard)</option>
+                <option value="R32">R-32 (Low GWP)</option>
               </select>
             </div>
             <div class="section">
-              <label for="dimming">Control</label>
-              <select id="dimming"></select>
-              <div class="help" id="dc-note" aria-live="polite"></div>
+              <label for="airflow">Airflow Pattern</label>
+              <select id="airflow"></select>
+              <div class="help" id="airflow-note" aria-live="polite"></div>
             </div>
             <div class="section">
-              <label for="option">Option</label>
-              <select id="option">
-                <option value="B">B (Standard)</option>
-                <option value="E">E (+$50)</option>
-                <option value="Z">Z (+$100, includes E)</option>
+              <label for="voltage">Voltage</label>
+              <select id="voltage">
+                <option value="208S">208V Single Phase</option>
+                <option value="230S">230V Single Phase</option>
+                <option value="208T">208/230V Three Phase</option>
+                <option value="460T">460V Three Phase (HE only)</option>
+                <option value="575T">575V Three Phase (HE only)</option>
+                <option value="CUST">Custom (+$50)</option>
               </select>
             </div>
             <div class="section">
-              <label for="bracket">Bracket</label>
-              <select id="bracket">
+              <label for="controls">Controls</label>
+              <select id="controls"></select>
+              <div class="help" id="controls-note" aria-live="polite"></div>
+            </div>
+            <div class="section">
+              <label for="warranty">Warranty</label>
+              <select id="warranty">
+                <option value="B">Standard (B)</option>
+                <option value="E">Extended 3yr (+$50, E)</option>
+                <option value="Z">Extended 5yr (+$100, Z)</option>
+              </select>
+            </div>
+            <div class="section">
+              <label for="mounting">Mounting</label>
+              <select id="mounting">
                 <option value="N">None</option>
-                <option value="M">Saddle (metric)</option>
-                <option value="I">Saddle (imperial)</option>
-                <option value="6">Collar 6"</option>
-                <option value="4">Collar 4"</option>
+                <option value="M">Rooftop Curb (metric)</option>
+                <option value="I">Rooftop Curb (imperial)</option>
+                <option value="6">Wall Bracket 6"</option>
+                <option value="4">Wall Bracket 4"</option>
               </select>
             </div>
             <div class="section">
-              <label for="connector">Connector</label>
-              <select id="connector"></select>
+              <label for="electrical">Electrical Connection</label>
+              <select id="electrical"></select>
             </div>
             <div class="section">
               <label for="qty">Quantity</label>
@@ -209,11 +209,11 @@
           </div>
         </div>
 
-        <!-- Non-light note -->
+        <!-- Non-HVAC note -->
         <div id="cfg-note" class="hidden">
           <div class="tile">
             <h3>Configuration for this type is not enabled</h3>
-            <div class="muted">Lights are the current focus. Use QuickShip for Cameras and Accessories, or switch type to Light.</div>
+            <div class="muted">HVAC Units are the current focus. Use QuickShip for Air Handlers and Controls, or switch type to HVAC Unit.</div>
           </div>
         </div>
       </div>
@@ -275,7 +275,7 @@
 
     // --- Helpers: security, encoding, formatting ---
     const htmlEscapeMap = { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;' };
-    function h(val){
+    function esc(val){
       if (val === null || val === undefined) return '';
       return String(val).replace(/[&<>"']/g, ch => htmlEscapeMap[ch]);
     }
@@ -289,7 +289,7 @@
           }
           return out;
         }
-        if (typeof v === 'string') return h(v);
+        if (typeof v === 'string') return esc(v);
         if (typeof v === 'number') return Number.isFinite(v) ? v : 0;
         return v;
       };
@@ -299,16 +299,16 @@
       try{
         if (!obj || typeof obj !== 'object') return false;
         if (!obj.base || typeof obj.base !== 'object') return false;
-        if (!obj.controls || typeof obj.controls !== 'object') return false;
+        if (!obj.controlOptions || typeof obj.controlOptions !== 'object') return false;
         obj.adders ||= {};
-        obj.adders.housing ||= {};
-        obj.adders.port ||= {};
-        obj.adders.color ||= {};
-        obj.adders.option ||= {};
+        obj.adders.cabinet ||= {};
+        obj.adders.refrigerant ||= {};
+        obj.adders.voltage ||= {};
+        obj.adders.warranty ||= {};
         obj.meta ||= {};
         obj.meta.quickshipLimit = Number.isFinite(obj.meta.quickshipLimit) ? obj.meta.quickshipLimit : 6;
         obj.meta.customizationFee = Number.isFinite(obj.meta.customizationFee) ? obj.meta.customizationFee : 0;
-        obj.connectorDefaults ||= {};
+        obj.electricalDefaults ||= {};
         obj.quickship ||= [];
         return true;
       }catch{return false;}
@@ -334,57 +334,57 @@
     const DEMO_PRICEBOOK = {
       meta:{ quickshipLimit:6, customizationFee:500 },
       base: {
-        "PRD-1000":2000, "PRD-1050":2200, "PRD-2000":2000, "PRD-2050":2200,
-        "Product B":1500, "Product C":1800, "Product D (IP)":5000, "Option Pack X":1200
+        "HV-3000":2000, "HV-3500":2200, "HV-5000":2000, "HV-5500":2200,
+        "Air Handler AH-200":1500, "Thermostat TH-100":1800, "BMS Controller CT-500":5000, "Filter Kit FK-50":1200
       },
-      adders:{ housing:{"TI":500, "11":1000}, port:{"S":100}, color:{"DW90":50}, option:{"E":50, "Z":100} },
-      controls:{
-        "PRD-1000":["PVD","RS2","RS44"],
-        "PRD-1050":["PVD","RS2","RS44"],
-        "PRD-2000":["A05","A10","A20","RS2","RS44"],
-        "PRD-2050":["A05","A10","A20","RS2","RS44"],
-        "Product B":["ON/OFF"],
-        "Product C":["ON/OFF"],
-        "Product D (IP)":["IP"],
-        "Option Pack X":["ON/OFF"]
+      adders:{ cabinet:{"SS":500, "PC":1000}, refrigerant:{"R32":100}, voltage:{"CUST":50}, warranty:{"E":50, "Z":100} },
+      controlOptions:{
+        "HV-3000":["Basic","Programmable","Smart/WiFi"],
+        "HV-3500":["Basic","Programmable","Smart/WiFi"],
+        "HV-5000":["BACnet","Modbus","LonWorks","Programmable","Smart/WiFi"],
+        "HV-5500":["BACnet","Modbus","LonWorks","Programmable","Smart/WiFi"],
+        "Air Handler AH-200":["Basic"],
+        "Thermostat TH-100":["Basic"],
+        "BMS Controller CT-500":["BACnet"],
+        "Filter Kit FK-50":["Basic"]
       },
-      connectorDefaults:{
-        "PRD-1000":[{id:"CON-3P-BH", label:"3-pin male bulkhead (OPT-003)"},{id:"CON-CUSTOM", label:"Other / custom"}],
-        "PRD-2000":[{id:"CON-5P-BH", label:"5-pin male bulkhead (OPT-005)"},{id:"CON-CUSTOM", label:"Other / custom"}],
-        "Product B":[{id:"CON-M5", label:"M5 Pigtail"}],
-        "Product C":[{id:"CON-M5", label:"M5 Pigtail"}],
-        "Product D (IP)":[{id:"CON-ETH", label:"Ethernet RJ45"}],
-        "Option Pack X":[{id:"CON-VENT", label:"Vent Plug"}]
+      electricalDefaults:{
+        "HV-3000":[{id:"HW-3P", label:"Hardwired (3-phase)"},{id:"ELEC-CUSTOM", label:"Custom"}],
+        "HV-5000":[{id:"HW-3P", label:"Hardwired (3-phase)"},{id:"ELEC-CUSTOM", label:"Custom"}],
+        "Air Handler AH-200":[{id:"PLUG-1P", label:"Plug-in (single phase)"}],
+        "Thermostat TH-100":[{id:"PLUG-1P", label:"Plug-in (single phase)"}],
+        "BMS Controller CT-500":[{id:"HW-3P", label:"Hardwired (3-phase)"}],
+        "Filter Kit FK-50":[{id:"NONE", label:"N/A"}]
       },
       quickship:[
-        {sku:"QS-PRD-1000-01", model:"PRD-1000", color:"DW00", beam:"FLD", housing:"AL", port:"S", option:"B", dimming:"PVD", bracket:"N", connector:"CON-3P-BH", pinout:"OPT-003", price:2100},
-        {sku:"QS-PRD-2000-01", model:"PRD-2000", color:"DW00", beam:"FLD", housing:"AL", port:"S", option:"B", dimming:"A05", bracket:"N", connector:"CON-5P-BH", pinout:"OPT-005", price:2100},
-        {sku:"QS-PROD-B-01",   model:"Product B", color:"DW00", beam:"Flood", housing:"AL", port:"A", option:"B", dimming:"ON/OFF", bracket:"N", connector:"CON-M5", price:1500},
-        {sku:"QS-PROD-C-01",   model:"Product C", color:"N/A", beam:"N/A", housing:"AL", port:"S", option:"B", dimming:"ON/OFF", bracket:"N", connector:"CON-M5", price:1800},
-        {sku:"QS-PROD-D-01",   model:"Product D (IP)", color:"N/A", beam:"Wide", housing:"TI", port:"S", option:"B", dimming:"IP", bracket:"M", connector:"CON-ETH", price:5000},
-        {sku:"QS-OPT-X-01",    model:"Option Pack X", color:"N/A", beam:"N/A", housing:"AL", port:"N/A", option:"B", dimming:"ON/OFF", bracket:"N", connector:"CON-VENT", price:1200}
+        {sku:"QS-HV-3000-01", model:"HV-3000", voltage:"208S", airflow:"Multi", cabinet:"GS", refrigerant:"R410A", warranty:"B", controls:"Basic", mounting:"N", electrical:"HW-3P", price:2100},
+        {sku:"QS-HV-5000-01", model:"HV-5000", voltage:"208T", airflow:"Multi", cabinet:"GS", refrigerant:"R410A", warranty:"B", controls:"BACnet", mounting:"N", electrical:"HW-3P", price:2100},
+        {sku:"QS-AH-200-01",  model:"Air Handler AH-200", voltage:"208S", airflow:"Horizontal", cabinet:"GS", refrigerant:"R410A", warranty:"B", controls:"Basic", mounting:"N", electrical:"PLUG-1P", price:1500},
+        {sku:"QS-TH-100-01",  model:"Thermostat TH-100", voltage:"N/A", airflow:"N/A", cabinet:"GS", refrigerant:"R410A", warranty:"B", controls:"Basic", mounting:"N", electrical:"PLUG-1P", price:1800},
+        {sku:"QS-CT-500-01",  model:"BMS Controller CT-500", voltage:"N/A", airflow:"N/A", cabinet:"SS", refrigerant:"R410A", warranty:"B", controls:"BACnet", mounting:"M", electrical:"HW-3P", price:5000},
+        {sku:"QS-FK-50-01",   model:"Filter Kit FK-50", voltage:"N/A", airflow:"N/A", cabinet:"GS", refrigerant:"N/A", warranty:"B", controls:"Basic", mounting:"N", electrical:"NONE", price:1200}
       ]
     };
 
-    // --- Model typing and beams by model ---
+    // --- Model typing and airflow patterns by model ---
     const MODEL_TYPES = {
-      "PRD-1000":"Light","PRD-1050":"Light","PRD-2000":"Light","PRD-2050":"Light",
-      "Product B":"Light",
-      "Product C":"Camera","Product D (IP)":"Camera",
-      "Option Pack X":"Accessory"
+      "HV-3000":"HVAC","HV-3500":"HVAC","HV-5000":"HVAC","HV-5500":"HVAC",
+      "Air Handler AH-200":"HVAC",
+      "Thermostat TH-100":"AirHandler","BMS Controller CT-500":"AirHandler",
+      "Filter Kit FK-50":"Controls"
     };
-    const MODEL_BEAMS = {
-      "PRD-1000":["FLD","WFD","SPT"],
-      "PRD-1050":["FLD","WFD","MED"],
-      "PRD-2000":["FLD","WFD","SPT"],
-      "PRD-2050":["FLD","WFD","MED"],
-      "Product B":["FLD"],
-      "default":["FLD"]
+    const MODEL_AIRFLOWS = {
+      "HV-3000":["Multi","Downflow","Horizontal"],
+      "HV-3500":["Multi","Downflow"],
+      "HV-5000":["Multi","Downflow","Horizontal"],
+      "HV-5500":["Multi","Downflow"],
+      "Air Handler AH-200":["Horizontal"],
+      "default":["Multi"]
     };
 
-    // --- Depth derivation tables ---
-    const HOUSING_DEPTH = { AL:6000, TI:6000, "11":11000 };
-    const PORT_DEPTH    = { A:4000,  S:11000 };
+    // --- Capacity derivation tables ---
+    const CABINET_CAPACITY = { GS:48000, SS:48000, PC:60000 };
+    const REFRIGERANT_CAPACITY = { R410A:36000, R32:60000 };
 
     // --- Mutable pricebook ---
     let PB = JSON.parse(JSON.stringify(DEMO_PRICEBOOK));
@@ -414,84 +414,84 @@
     // --- State ---
     const state = {
       items: [],
-      type: 'Light',
-      cfg: { model: '', depth: 4000, housing: 'AL', port: 'S', beam: 'FLD', color: 'DW00', dimming: '', option: 'B', bracket: 'N', connector: '', qty: 1 }
+      type: 'HVAC',
+      cfg: { model: '', capacity: 36000, cabinet: 'GS', refrigerant: 'R410A', airflow: 'Multi', voltage: '208S', controls: '', warranty: 'B', mounting: 'N', electrical: '', qty: 1 }
     };
 
     // --- Rules ---
     const RULES = [
       function controlAllowed(cfg){
-        const allowed = PB.controls[cfg.model] || [];
-        if(!allowed.includes(cfg.dimming)) return {level:'err', t:`Control ${cfg.dimming} not valid for ${cfg.model}`, fix:()=>{ cfg.dimming = allowed[0]; }};
+        const allowed = PB.controlOptions[cfg.model] || [];
+        if(!allowed.includes(cfg.controls)) return {level:'err', t:`Controls "${cfg.controls}" not valid for ${cfg.model}`, fix:()=>{ cfg.controls = allowed[0]; }};
       },
-      function beamAllowedByModel(cfg){
-        const allowed = MODEL_BEAMS[cfg.model] || MODEL_BEAMS.default;
-        if(!allowed.includes(cfg.beam)) return {level:'warn', t:`Beam ${cfg.beam} not valid for ${cfg.model}`, fix:()=>{ cfg.beam = allowed[0]; }};
+      function airflowAllowedByModel(cfg){
+        const allowed = MODEL_AIRFLOWS[cfg.model] || MODEL_AIRFLOWS.default;
+        if(!allowed.includes(cfg.airflow)) return {level:'warn', t:`Airflow "${cfg.airflow}" not valid for ${cfg.model}`, fix:()=>{ cfg.airflow = allowed[0]; }};
       },
-      function wfdNeedsAcrylic(cfg){
-        if(cfg.beam==='WFD' && cfg.port!=='A') return {level:'warn', t:'WFD 115° requires Acrylic port', fix:()=>{ cfg.port='A'; }};
+      function multiRequiresR410A(cfg){
+        if(cfg.airflow==='Multi' && cfg.refrigerant!=='R410A') return {level:'warn', t:'Multi-Directional requires R-410A refrigerant', fix:()=>{ cfg.refrigerant='R410A'; }};
       },
-      function beamVsOutput(cfg){
-        const isHO = /-?2050$|-?1050$/.test(cfg.model);
-        if(cfg.beam==='SPT' && isHO) return {level:'err', t:'SPT available only on base output', fix:()=>{ cfg.model = cfg.model.replace('50','00'); }};
-        if(cfg.beam==='MED' && !isHO && /^PRD-/.test(cfg.model)) return {level:'err', t:'MED 40° on HO models only', fix:()=>{ cfg.model = cfg.model.replace('00','50'); }};
+      function airflowVsCapacity(cfg){
+        const isHE = /-?3500$|-?5500$/.test(cfg.model);
+        if(cfg.airflow==='Horizontal' && isHE) return {level:'err', t:'Horizontal available only on standard efficiency', fix:()=>{ cfg.model = cfg.model.replace('500','000').replace('5500','5000'); }};
+        if(cfg.airflow==='Downflow' && !isHE && /^HV-/.test(cfg.model)) return {level:'err', t:'Downflow on high efficiency only', fix:()=>{ cfg.model = cfg.model.replace('3000','3500').replace('5000','5500'); }};
       },
-      function monoRequiresHO(cfg){
-        const isHO = /-?2050$|-?1050$/.test(cfg.model);
-        if(['B475','G528','R625'].includes(cfg.color) && !isHO) return {level:'err', t:'Mono colors require High Output', fix:()=>{ cfg.model = cfg.model.replace('00','50'); }};
+      function highVoltageRequiresHE(cfg){
+        const isHE = /-?3500$|-?5500$/.test(cfg.model);
+        if(['460T','575T'].includes(cfg.voltage) && !isHE) return {level:'err', t:'460V/575V Three Phase requires High Efficiency model', fix:()=>{ cfg.model = cfg.model.replace('3000','3500').replace('5000','5500'); }};
       },
-      function dcOutputNote(cfg){
-        if(/^PRD-2/.test(cfg.model)) return {level:'ok', t:'DC models deliver ~50% output below ~18–20 VDC'};
+      function efficiencyNote(cfg){
+        if(/-?3500$|-?5500$/.test(cfg.model)) return {level:'ok', t:'High Efficiency models deliver 18+ SEER rating'};
       }
     ];
 
     // --- Helpers ---
     function computeUnitPrice(cfg){
       let p = PB.base[cfg.model] || 0;
-      if(PB.adders.housing[cfg.housing]) p += PB.adders.housing[cfg.housing];
-      if(PB.adders.port[cfg.port]) p += PB.adders.port[cfg.port];
-      if(PB.adders.color[cfg.color]) p += PB.adders.color[cfg.color];
-      if(PB.adders.option[cfg.option]) p += PB.adders.option[cfg.option];
+      if(PB.adders.cabinet[cfg.cabinet]) p += PB.adders.cabinet[cfg.cabinet];
+      if(PB.adders.refrigerant[cfg.refrigerant]) p += PB.adders.refrigerant[cfg.refrigerant];
+      if(PB.adders.voltage[cfg.voltage]) p += PB.adders.voltage[cfg.voltage];
+      if(PB.adders.warranty[cfg.warranty]) p += PB.adders.warranty[cfg.warranty];
       return p;
     }
-    function computeDepth(housing, port){
-      const h = HOUSING_DEPTH[housing] || 0;
-      const p = PORT_DEPTH[port] || 0;
-      return Math.min(h,p) || 0;
+    function computeCapacity(cabinet, refrigerant){
+      const c = CABINET_CAPACITY[cabinet] || 0;
+      const r = REFRIGERANT_CAPACITY[refrigerant] || 0;
+      return Math.min(c,r) || 0;
     }
-    function updateDepthUI(){
-      const d = computeDepth(state.cfg.housing, state.cfg.port);
-      state.cfg.depth = d;
-      const sel = document.getElementById('depth');
-      [...sel.options].forEach(o=> o.selected = (parseInt(o.value,10)===d));
-      // If the exact depth is not in options, add it once
-      if(![...sel.options].some(o=>parseInt(o.value,10)===d)){
+    function updateCapacityUI(){
+      const cap = computeCapacity(state.cfg.cabinet, state.cfg.refrigerant);
+      state.cfg.capacity = cap;
+      const sel = document.getElementById('capacity');
+      [...sel.options].forEach(o=> o.selected = (parseInt(o.value,10)===cap));
+      // If the exact capacity is not in options, add it once
+      if(![...sel.options].some(o=>parseInt(o.value,10)===cap)){
         const opt = document.createElement('option');
-        opt.value = String(d);
-        opt.textContent = d.toLocaleString() + ' m';
+        opt.value = String(cap);
+        opt.textContent = cap.toLocaleString() + ' BTU';
         sel.appendChild(opt);
         opt.selected = true;
       }
     }
 
     function cfgToString(cfg){
-      const parts = [cfg.model, cfg.color, cfg.beam, `${cfg.housing}/${cfg.port}`, cfg.option, cfg.dimming, cfg.bracket, cfg.connector];
+      const parts = [cfg.model, cfg.voltage, cfg.airflow, `${cfg.cabinet}/${cfg.refrigerant}`, cfg.warranty, cfg.controls, cfg.mounting, cfg.electrical];
       return parts.join(' / ');
     }
 
     function getModelsForType(type){
-      return Object.keys(PB.base).filter(m => (MODEL_TYPES[m] || 'Accessory') === type);
+      return Object.keys(PB.base).filter(m => (MODEL_TYPES[m] || 'Controls') === type);
     }
 
-    function renderBeamOptionsForModel(model){
-      const list = MODEL_BEAMS[model] || MODEL_BEAMS.default;
-      const beamSel = document.getElementById('beam');
-      beamSel.innerHTML = '';
-      list.forEach(v=>{ const o=document.createElement('option'); o.value=v; o.textContent=v; beamSel.appendChild(o); });
+    function renderAirflowOptionsForModel(model){
+      const list = MODEL_AIRFLOWS[model] || MODEL_AIRFLOWS.default;
+      const airflowSel = document.getElementById('airflow');
+      airflowSel.innerHTML = '';
+      list.forEach(v=>{ const o=document.createElement('option'); o.value=v; o.textContent=v; airflowSel.appendChild(o); });
       // keep current if valid, else first
-      beamSel.value = list.includes(state.cfg.beam) ? state.cfg.beam : list[0];
-      state.cfg.beam = beamSel.value;
-      document.getElementById('beam-note').textContent = state.cfg.beam==='WFD' ? 'WFD 115° requires Acrylic port' : '';
+      airflowSel.value = list.includes(state.cfg.airflow) ? state.cfg.airflow : list[0];
+      state.cfg.airflow = airflowSel.value;
+      document.getElementById('airflow-note').textContent = state.cfg.airflow==='Multi' ? 'Multi-Directional requires R-410A refrigerant' : '';
     }
 
     function renderModelOptions(){
@@ -517,10 +517,9 @@
         el.className = 'tile';
         el.innerHTML = `
           <h3>${q.sku} - ${q.model}</h3>
-          <div class="muted">${q.color} · ${q.beam} · ${q.housing}/${q.port} · ${q.option} · ${q.dimming} · Bracket ${q.bracket}</div>
+          <div class="muted">${q.voltage} | ${q.airflow} | ${q.cabinet}/${q.refrigerant} | ${q.warranty} | ${q.controls} | Mounting ${q.mounting}</div>
           <div class="row" style="margin-top:6px">
             <div class="price">${MONEY(q.price)}</div>
-            <span class="muted">${q.pinout?`Pinout ${q.pinout}`:''}</span>
             <span style="flex:1"></span>
             <label class="muted" for="qqty${idx}">Qty</label>
             <input id="qqty${idx}" type="number" min="0" value="0" style="width:72px" />
@@ -544,23 +543,23 @@
       const model = document.getElementById('model').value;
 
       // Controls
-      const dimSel = document.getElementById('dimming');
-      dimSel.innerHTML = '';
-      (PB.controls[model]||[]).forEach(v=>{ const o = document.createElement('option'); o.value=v; o.textContent=v; dimSel.appendChild(o); });
+      const ctrlSel = document.getElementById('controls');
+      ctrlSel.innerHTML = '';
+      (PB.controlOptions[model]||[]).forEach(v=>{ const o = document.createElement('option'); o.value=v; o.textContent=v; ctrlSel.appendChild(o); });
 
-      // Connectors
-      const connSel = document.getElementById('connector');
-      connSel.innerHTML = '';
-      const fam = model.startsWith('PRD-1')? 'PRD-1000' : (model.startsWith('PRD-2')? 'PRD-2000' : null);
-      const connList = PB.connectorDefaults[model] || (fam ? PB.connectorDefaults[fam] : []) || [];
-      connList.forEach(c=>{ const o = document.createElement('option'); o.value=c.id; o.textContent=c.label; connSel.appendChild(o); });
+      // Electrical connections
+      const elecSel = document.getElementById('electrical');
+      elecSel.innerHTML = '';
+      const fam = model.startsWith('HV-3')? 'HV-3000' : (model.startsWith('HV-5')? 'HV-5000' : null);
+      const elecList = PB.electricalDefaults[model] || (fam ? PB.electricalDefaults[fam] : []) || [];
+      elecList.forEach(c=>{ const o = document.createElement('option'); o.value=c.id; o.textContent=c.label; elecSel.appendChild(o); });
 
-      // Beams by model
-      renderBeamOptionsForModel(model);
+      // Airflow by model
+      renderAirflowOptionsForModel(model);
 
       state.cfg.model = model;
-      state.cfg.dimming = dimSel.value || '';
-      state.cfg.connector = connSel.value || '';
+      state.cfg.controls = ctrlSel.value || '';
+      state.cfg.electrical = elecSel.value || '';
     }
 
     function renderPreview(){
@@ -570,7 +569,7 @@
       p.innerHTML = `
         <div class="tile">
           <h3>${cfgToString(cfg)}</h3>
-          <div class="muted">Max depth ${cfg.depth.toLocaleString()} m · Qty ${cfg.qty}</div>
+          <div class="muted">Capacity ${cfg.capacity.toLocaleString()} BTU | Qty ${cfg.qty}</div>
           <div class="row"><span class="muted">Unit</span><span class="price">${MONEY(unit)}</span></div>
         </div>
       `;
@@ -583,10 +582,10 @@
         const s = document.createElement('span');
         s.className = 'chip ' + (c.level||'');
         s.innerHTML = `${c.t} ${c.fix?`<button class="btn ghost small" style="margin-left:6px">Fix</button>`:''}`;
-        if(c.fix){ s.querySelector('button').onclick = ()=>{ c.fix(state.cfg); updateDepthUI(); renderAll(); }; }
+        if(c.fix){ s.querySelector('button').onclick = ()=>{ c.fix(state.cfg); updateCapacityUI(); renderAll(); }; }
         box.appendChild(s);
       });
-      document.getElementById('dc-note').textContent = /^PRD-2/.test(cfg.model) ? 'Tip: Below ~18–20 VDC output is reduced.' : '';
+      document.getElementById('controls-note').textContent = /-?5/.test(cfg.model) ? 'Tip: Large units support BACnet, Modbus, and LonWorks.' : '';
     }
 
     function renderCart(){
@@ -626,21 +625,21 @@
       const ps = document.getElementById('print-summary');
       ps.innerHTML = state.items.map(i=>{
         const t = i.type==='qs'
-          ? `${i.sku} - ${i.config.model} (${i.config.color} ${i.config.beam} ${i.config.housing}/${i.config.port} ${i.config.option} ${i.config.dimming})`
+          ? `${i.sku} - ${i.config.model} (${i.config.voltage} ${i.config.airflow} ${i.config.cabinet}/${i.config.refrigerant} ${i.config.warranty} ${i.config.controls})`
           : cfgToString(i.config);
-        return `<div><strong>${t}</strong><div>Qty ${i.qty} · Unit ${MONEY(i.unit)} · Line ${MONEY(i.unit*i.qty)}</div></div>`;
+        return `<div><strong>${t}</strong><div>Qty ${i.qty} | Unit ${MONEY(i.unit)} | Line ${MONEY(i.unit*i.qty)}</div></div>`;
       }).join('<hr />') + (state.items.length?'<hr/>':'') + `<div><strong>Subtotal:</strong> ${MONEY(sub)}<br/><strong>Customization fee:</strong> ${MONEY(custFee)}<br/><strong>Total:</strong> ${MONEY(sub+custFee)}</div>`;
     }
 
     function syncFromUI(){
-      const ids = ["model","housing","port","beam","color","dimming","option","bracket","connector","qty"];
+      const ids = ["model","cabinet","refrigerant","airflow","voltage","controls","warranty","mounting","electrical","qty"];
       ids.forEach(id=>{ let v = document.getElementById(id).value; if(id==='qty') v = Math.max(1, parseInt(v||'1',10)); state.cfg[id] = v; });
-      updateDepthUI();
+      updateCapacityUI();
       renderPreview();
     }
 
     function renderAll(resetHash){
-      updateDepthUI();
+      updateCapacityUI();
       renderPreview();
       renderCart();
       if(resetHash){ location.hash = ''; }
@@ -649,9 +648,9 @@
 
     function setTypeUI(type){
       state.type = type;
-      const isLight = type === 'Light';
-      document.getElementById('cfg-fields').classList.toggle('hidden', !isLight);
-      document.getElementById('cfg-note').classList.toggle('hidden', isLight);
+      const isHVAC = type === 'HVAC';
+      document.getElementById('cfg-fields').classList.toggle('hidden', !isHVAC);
+      document.getElementById('cfg-note').classList.toggle('hidden', isHVAC);
     }
 
     // Events
@@ -659,7 +658,7 @@
     document.getElementById('tab-cfg').onclick = ()=>{ document.getElementById('panel-qs').classList.add('hidden'); document.getElementById('panel-cfg').classList.remove('hidden'); document.getElementById('tab-qs').setAttribute('aria-selected','false'); document.getElementById('tab-cfg').setAttribute('aria-selected','true'); };
 
     document.getElementById('ptype').onchange = ()=>{ renderModelOptions(); syncFromUI(); };
-    ['housing','port','beam','color','dimming','option','bracket','connector','qty'].forEach(id=>{ document.getElementById(id).onchange = syncFromUI; });
+    ['cabinet','refrigerant','airflow','voltage','controls','warranty','mounting','electrical','qty'].forEach(id=>{ document.getElementById(id).onchange = syncFromUI; });
 
     document.getElementById('model').onchange = ()=>{ renderControlsForModel(); syncFromUI(); };
 
@@ -672,10 +671,10 @@
       renderAll();
     };
     document.getElementById('reset').onclick = ()=>{
-      const typeSel = document.getElementById('ptype').value || 'Light';
+      const typeSel = document.getElementById('ptype').value || 'HVAC';
       const models = getModelsForType(typeSel);
       const firstModel = models[0];
-      state.cfg = {model:firstModel, depth:4000, housing:'AL', port:'S', beam:(MODEL_BEAMS[firstModel]||MODEL_BEAMS.default)[0], color:'DW00', dimming:(PB.controls[firstModel]||[])[0]||'', option:'B', bracket:'N', connector:(PB.connectorDefaults[firstModel]||[])[0]?.id||'', qty:1};
+      state.cfg = {model:firstModel, capacity:36000, cabinet:'GS', refrigerant:'R410A', airflow:(MODEL_AIRFLOWS[firstModel]||MODEL_AIRFLOWS.default)[0], voltage:'208S', controls:(PB.controlOptions[firstModel]||[])[0]||'', warranty:'B', mounting:'N', electrical:(PB.electricalDefaults[firstModel]||[])[0]?.id||'', qty:1};
       renderControlsForModel();
       renderAll(true);
     };
@@ -686,16 +685,16 @@
 
     // Init
     function initFromPB(){
-      // Default type = Light
-      document.getElementById('ptype').value = 'Light';
-      setTypeUI('Light');
+      // Default type = HVAC
+      document.getElementById('ptype').value = 'HVAC';
+      setTypeUI('HVAC');
       renderModelOptions();
       renderQuickShip();
       // initialize cfg
-      state.cfg.model = state.cfg.model || getModelsForType('Light')[0];
-      state.cfg.dimming = (PB.controls[state.cfg.model]||[])[0]||'';
-      const connList = PB.connectorDefaults[state.cfg.model] || [];
-      state.cfg.connector = connList[0]?.id || '';
+      state.cfg.model = state.cfg.model || getModelsForType('HVAC')[0];
+      state.cfg.controls = (PB.controlOptions[state.cfg.model]||[])[0]||'';
+      const elecList = PB.electricalDefaults[state.cfg.model] || [];
+      state.cfg.electrical = elecList[0]?.id || '';
       renderAll(true);
     }
 
