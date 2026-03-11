@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Product Configurator — Canvas MVP</title>
+  <title>Product Configurator - Canvas MVP</title>
   <style>
     /* THEME TOKENS */
     :root{
@@ -83,7 +83,7 @@
 <body>
   <div class="toolbar no-print" role="region" aria-label="Toolbar">
     <div class="left row" style="gap:12px">
-      <strong>Product Configurator — Canvas MVP</strong>
+      <strong>Product Configurator - Canvas MVP</strong>
       <span class="muted">Demo build. Data may be placeholder.</span>
     </div>
     <div class="right">
@@ -96,7 +96,7 @@
   <div class="app">
     <!-- LEFT: QuickShip & Wizard -->
     <div class="col left">
-      <h2>Product A — MVP</h2>
+      <h2>Product A - MVP</h2>
       <div class="tabs" role="tablist">
         <button id="tab-qs" class="tab" role="tab" aria-selected="false">QuickShip</button>
         <button id="tab-cfg" class="tab" role="tab" aria-selected="true">Configure</button>
@@ -516,7 +516,7 @@
         const el = document.createElement('div');
         el.className = 'tile';
         el.innerHTML = `
-          <h3>${q.sku} — ${q.model}</h3>
+          <h3>${q.sku} - ${q.model}</h3>
           <div class="muted">${q.color} · ${q.beam} · ${q.housing}/${q.port} · ${q.option} · ${q.dimming} · Bracket ${q.bracket}</div>
           <div class="row" style="margin-top:6px">
             <div class="price">${MONEY(q.price)}</div>
@@ -595,7 +595,7 @@
       if(state.items.length===0){ host.innerHTML = '<div class="muted">No items yet.</div>'; }
       state.items.forEach((it,idx)=>{
         const el = document.createElement('div'); el.className='cart-item';
-        const label = it.type==='qs' ? `${it.sku} — ${it.config.model}` : cfgToString(it.config);
+        const label = it.type==='qs' ? `${it.sku} - ${it.config.model}` : cfgToString(it.config);
         el.innerHTML = `
           <div class="row"><div>${label}</div><span style=\"flex:1\"></span><strong>${MONEY(it.unit*it.qty)}</strong></div>
           <div class="row muted">
@@ -626,7 +626,7 @@
       const ps = document.getElementById('print-summary');
       ps.innerHTML = state.items.map(i=>{
         const t = i.type==='qs'
-          ? `${i.sku} — ${i.config.model} (${i.config.color} ${i.config.beam} ${i.config.housing}/${i.config.port} ${i.config.option} ${i.config.dimming})`
+          ? `${i.sku} - ${i.config.model} (${i.config.color} ${i.config.beam} ${i.config.housing}/${i.config.port} ${i.config.option} ${i.config.dimming})`
           : cfgToString(i.config);
         return `<div><strong>${t}</strong><div>Qty ${i.qty} · Unit ${MONEY(i.unit)} · Line ${MONEY(i.unit*i.qty)}</div></div>`;
       }).join('<hr />') + (state.items.length?'<hr/>':'') + `<div><strong>Subtotal:</strong> ${MONEY(sub)}<br/><strong>Customization fee:</strong> ${MONEY(custFee)}<br/><strong>Total:</strong> ${MONEY(sub+custFee)}</div>`;
